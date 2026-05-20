@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: prepwise-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: PYTHON_SERVICE_URL
+        sync: false
+      - key: GO_SERVICE_URL
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+
+  - type: web
+    name: prepwise-py-service
+    runtime: python
+    rootDir: py-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+
+  - type: web
+    name: prepwise-go-service
+    runtime: go
+    rootDir: go-service
+    buildCommand: go build -o server .
+    startCommand: ./server
