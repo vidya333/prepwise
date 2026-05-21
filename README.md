@@ -2,7 +2,7 @@
 
 > Drop any PDF or topic. Get questions, roadmap, mindmap, MCQs, tasks, keywords, and web refs — instantly.
 
-Built with **MERN + TypeScript + Python + Go ** · Deploy free on Vercel + Render
+Built with **MERN + TypeScript + Python + Go ** · Deployed on Vercel 
 
 ## Stack
 
